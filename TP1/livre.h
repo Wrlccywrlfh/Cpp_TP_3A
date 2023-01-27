@@ -1,24 +1,30 @@
+#pragma once
 #include "genre.h"
-#include "langue.h"
 #include "date.h"
+#include "langue.h"
+#include "auteur.h"
+
 using namespace std;
 
 	class Livre
 	{
 	public:
-		Livre(std::string nom, std::string auteur, Langue langue, Genre genre, Date publication, int isbn);
-		std::string auteur();
+		Auteur auteur();
+		Livre(std::string nom, Auteur auteur, Langue langue, Genre genre, Date publication, long isbn);
 		std::string nom();
-		int ISBN();
+		long ISBN();
 		bool disponible();
-		void setDispo();
+		void setDispo(bool b);
+		bool operator == (Livre& livre) const;
+		friend std::ostream& operator<<(std::ostream& out, Livre& livre);
 	private:
 		std::string _nom; 
-		std::string _auteur; 
+		Auteur _auteur; 
 		Langue _langue;
 		Genre _genre; 
 		Date _publication;
-		int _ISBN;
-		//std::vector<Lecteur> _lecteurs;
-		bool _disponible = true;
+		long _ISBN;
+		bool _disponible;
 	};
+
+	

@@ -1,5 +1,28 @@
 #include "emprunt.h"
 
-Emprunt::Emprunt(Date date_emprunt, int ISBN, std::string id_lecteur, bool autorisation) :  
-_date_emprunt(date_emprunt), _ISBN(ISBN), _id_lecteur(id_lecteur), _autorisation(autorisation) {
+Emprunt::Emprunt(Date date_emprunt, Livre &livre, Lecteur &lecteur) :  
+_date_emprunt(date_emprunt), _livre(livre), _lecteur(lecteur) {
+	lecteur.ajout(livre);
+	livre.setDispo(false);
 }
+
+bool Emprunt::autorisation(Livre l) {
+	return l.disponible();
+}
+
+void Emprunt::retour(Lecteur &lect, Livre &livre) {
+	if(livre.disponible() == false) {
+		lect.suppr(livre); 
+		lect.ajout_lus(livre);
+		livre.setDispo(true);
+	}
+	else std::cout << "Vous n'avez pas emprunté ce livre. " << std::endl;
+}
+
+Livre Emprunt::livre(){
+	return _livre;
+}	
+Lecteur Emprunt::lecteur(){
+	return _lecteur;
+}
+

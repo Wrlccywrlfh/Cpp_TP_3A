@@ -1,4 +1,10 @@
+//Langue.h
+#include <iostream>
 enum class Langue
 {
-	Français, Anglais, Turque, Japonais, Russe, Espagnol, Italien, Allemand, Chinois, Coréen, Kazakh, Créole
+	Français, Anglais, Japonais, Allemand
 };
+
+static const std::string tabLangue[] = {"Français", "Anglais", "Japonais", "Allemand"};
+
+

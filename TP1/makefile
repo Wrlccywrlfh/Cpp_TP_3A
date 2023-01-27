@@ -4,7 +4,7 @@ CXX        = clang++
 CXXFLAGS   = -Wall  -std=c++20
 DEPFLAGS   = -MMD
 LDFLAGS    =
-SRCS       = lecteur.cpp main.cpp date.cpp livre.cpp emprunt.cpp bibliotheque.cpp#Ensemble fes fichiers à compiler
+SRCS       = auteur.cpp lecteur.cpp main.cpp date.cpp livre.cpp emprunt.cpp bibliotheque.cpp#Ensemble fes fichiers à compiler
 OBJS       = $(SRCS:.cpp=.o)
 TARGET     = app
 DEPS	   = $(OBJS:.o=.d)
